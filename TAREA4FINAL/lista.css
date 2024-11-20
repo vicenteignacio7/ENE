@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Economica|Ubuntu|Ubuntu+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Advent+Pro|Allura|Amatic+SC|Bad+Script|Calligraffitti|Caveat|Cinzel|Clicker+Script|Comfortaa|Cookie|Dancing+Script|Dosis|Economica|Expletus+Sans|Great+Vibes|Handlee|Julius+Sans+One|Jura|Kaushan+Script|Khand|Lemonada|Marck+Script|Megrim|Oleo+Script|Petit+Formal+Script|Pompiere|Rajdhani|Sacramento|Shrikhand|Wire+One');
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Tabla centrada */
+table {
+    width: 80%;
+    max-width: 800px;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 auto; /* Centrado horizontal */
+}
+
+thead {
+    background-color: #333;
+    color: #fff;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+td {
+    color: #555;
+}
+
+/* Colores específicos para los estados */
+td.status {
+    font-weight: bold;
+}
+
+td.status:contains("Preparando") {
+    color: #ff9900;
+}
+
+td.status:contains("Listo para Servir") {
+    color: #4CAF50;
+}
+
+td.status:contains("En Cola") {
+    color: #ff0000;
+}
+
+td.status:contains("Servido") {
+    color: #ff00ff;
+}
+
+/* Estilo para el botón de cambiar estado */
+button.change-status {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.change-status:hover {
+    background-color: #45a049;
+}

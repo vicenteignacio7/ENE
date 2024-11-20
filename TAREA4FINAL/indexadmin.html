@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siglo XXI - Administración</title>
+    <link rel="stylesheet" href="cocina.css">
+    <link rel="stylesheet" href="lista.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="con">
+                <h1>Siglo "XXI"<span>Restaurante</span></h1>
+                <ul>
+                    <li><a href="admin.html">INICIO</a></li>
+                    <li><a href="cocinaadmin.html">COCINA</a></li>
+                    <li><a href="bodegaadmin.html">BODEGA</a></li>
+                    <li><a href="finanzasadmin.html">FINANZAS</a></li>
+                    <li class="logout-item">
+                        <a href="inicio.php" class="logout-button">CERRAR SESIÓN</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    <div class="header-center">
+        <div class="con">
+            <h2>Siglo "XXI"<span>Restaurante</span></h2>
+            <p>¡Bienvenidos a Restaurante Siglo XXI!
+                Nos alegra que nos visiten y sean parte 
+                de una experiencia culinaria única, donde la pasión 
+                por la gastronomía se mezcla con un ambiente
+                acogedor y moderno. Nuestro equipo está dedicado
+                a brindarle un servicio excepcional, con platos
+                preparados cuidadosamente y con los mejores ingredientes.</p>
+            <p>Esperamos que disfruten de nuestra variedad de sabores y se sientan como en casa. ¡Bienvenidos y buen provecho!
+
+
+
+
+
+
+            </p>
+        </div>
+    </div>
+</header>
+
+<article class="Our-Dishes">
+    <h3>Nuestros Platos</h3>
+    <div class="info-dishes">
+        <i class="fa fa-heart-o" title="Likes"></i>Likes
+        <i class="fa fa-clock-o" aria-hidden="true" title="Tiempo de preparación"></i>Tiempo de preparación
+        <i class="fa fa-fire" aria-hidden="true" title="Comida picante"></i>Stock
+        <i class="fa fa-usd" aria-hidden="true" title="Precio"></i>Precio
+    </div>
+    <div class="con">
+        <div class="post post0">
+            <img src="img/1.jpg" alt="Rabo de Toro" title="Rabo de Toro">
+            <h4>Rabo de Toro</h4>
+            <p>Un clásico de la cocina española, cocido lentamente en un vino tinto robusto con hierbas frescas.</p>
+            <div class="con2">
+                <i class="fa fa-heart-o" title="Likes"></i>321
+                <i class="fa fa-clock-o" aria-hidden="true"></i>60min
+                <i class="" aria-hidden="true"></i>20
+                <i class="fa fa-usd" aria-hidden="true"></i>50.000CLP
+            </div>
+            <button class="add-to-order" data-name="Rabo de Toro" data-price="50000">Agregar al pedido</button>
+        </div>
+        
+        <div class="post post1">
+            <img src="img/4.jpg" alt="Risotto de Trufa" title="Risotto de Trufa">
+            <h4>Risotto de Trufa</h4>
+            <p>Delicioso risotto cremoso, infundido con aceite de trufa y adornado con setas silvestres.</p>
+            <div class="con2">
+                <i class="fa fa-heart-o" title="Likes"></i>287
+                <i class="fa fa-clock-o" aria-hidden="true"></i>15min
+                <i class="" aria-hidden="true"></i>10
+                <i class="fa fa-usd" aria-hidden="true"></i>30.000CLP
+            </div>
+            <button class="add-to-order" data-name="Risotto de Trufa" data-price="30000">Agregar al pedido</button>
+        </div>
+        
+        <div class="post post2">
+            <img src="img/5.jpg" alt="Caviar" title="Caviar">
+            <h4>Caviar</h4>
+            <p>Exquisito caviar servido sobre una base de blinis esponjosos, acompañado de crema fresca y cebollín picado. Una delicia para los paladares más exigentes.</p>
+            <div class="con2">
+                <i class="fa fa-heart-o" title="Likes"></i>402
+                <i class="fa fa-clock-o" aria-hidden="true"></i>30min
+                <i class="" aria-hidden="true"></i>14
+                <i class="fa fa-usd" aria-hidden="true"></i>67.000CLP
+            </div>
+            <button class="add-to-order" data-name="Caviar" data-price="67000">Agregar al pedido</button>
+        </div>
+        
+        <div class="post post3">
+            <img src="img/6.jpg" alt="Langosta a la Parrilla" title="Langosta a la Parrilla">
+            <h4>Langosta a la Parrilla</h4>
+            <p>Langosta fresca a la parrilla, servida con mantequilla de ajo y limon.</p>
+            <div class="con2">
+                <i class="fa fa-heart-o" title="Likes"></i>396
+                <i class="fa fa-clock-o" aria-hidden="true"></i>20min
+                <i class="" aria-hidden="true"></i>7
+                <i class="fa fa-usd" aria-hidden="true"></i>63.000CLP
+            </div>
+            <button class="add-to-order" data-name="Langosta a la Parrilla" data-price="63000">Agregar al pedido</button>
+        </div>
+        
+        <div class="post post4">
+            <img src="img/2.jpg" alt="Filete Mignon" title="Filete Mignon">
+            <h4>Filete Mignon</h4>
+            <p>Un tierno filete de res, servido con salsa de vino tinto y verduras asadas.</p>
+            <div class="con2">
+                <i class="fa fa-heart-o" title="Likes"></i>272
+                <i class="fa fa-clock-o" aria-hidden="true"></i>25min
+                <i class="" aria-hidden="true"></i>13
+                <i class="fa fa-usd" aria-hidden="true"></i>54.000CLP
+            </div>
+            <button class="add-to-order" data-name="Filete Mignon" data-price="54000">Agregar al pedido</button>
+        </div>
+        
+        <div class="post post5">
+            <img src="img/3.jpg" alt="Crema de Limón" title="Crema de Limón">
+            <h4>Crema de Limon</h4>
+            <p>Un postre refrescante de crema de limon, servido con galletas de mantequilla.</p>
+            <div class="con2">
+                <i class="fa fa-heart-o" title="Likes"></i>402
+                <i class="fa fa-clock-o" aria-hidden="true"></i>10min
+                <i class="" aria-hidden="true"></i>21
+                <i class="fa fa-usd" aria-hidden="true"></i>20.000CLP
+            </div>
+            <button class="add-to-order" data-name="Crema de Limón" data-price="20000">Agregar al pedido</button>
+        </div>
+    </div>
+</article>
+
+<section class="orders">
+    <h2>Lista de Pedidos</h2>
+    <ul class="order-list" id="pedido-container">
+        <li class="order-item" id="empty-message">Lista de pedidos vacia. Por favor, agregue un pedido para su mesa.</li>
+    </ul>
+    <button class="confirm-order">Confirmar Pedido Terminado</button>
+</section>
+
+
+    
+    
+    
+    
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const addToOrderButtons = document.querySelectorAll('.add-to-order');
+    const confirmOrderButton = document.querySelector('.confirm-order');
+    const pedidoContainer = document.getElementById('pedido-container');
+
+    // Crear un array para los pedidos
+    let orderList = [];
+
+    // Crear el elemento que mostrará el total
+    const totalElement = document.createElement('li');
+    totalElement.className = 'order-item';
+    totalElement.id = 'total-price';
+    totalElement.textContent = "Total: $0"; // Inicializar el total
+
+    // Agregar el total al contenedor de pedidos
+    pedidoContainer.appendChild(totalElement);
+
+    // Manejar el clic en los botones de agregar
+    addToOrderButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const name = this.getAttribute('data-name');
+            const price = parseInt(this.getAttribute('data-price')); // Asegurarnos de que el precio sea un número
+            addToOrder(name, price);
+        });
+    });
+
+    // Función para agregar un pedido a la lista
+    function addToOrder(name, price) {
+        // Eliminar el mensaje de "Lista de pedidos vacía" si existe
+        const emptyMessage = document.getElementById('empty-message');
+        if (emptyMessage) {
+            emptyMessage.remove();
+        }
+
+        // Crear un nuevo pedido
+        const orderItem = {
+            name: name,
+            price: price // Guardar el precio como número
+        };
+
+        // Agregar el pedido a la lista
+        orderList.push(orderItem);
+
+        // Mostrar el pedido en la lista
+        const orderElement = document.createElement('li');
+        orderElement.className = 'order-item';
+        orderElement.innerHTML = `
+            <span>${name} - $${price.toLocaleString('es-CL')}</span>
+            <button class="remove-order">Eliminar</button>
+        `;
+
+        pedidoContainer.insertBefore(orderElement, totalElement); // Insertar el nuevo pedido antes del total
+
+        // Agregar evento de eliminación
+        const removeButton = orderElement.querySelector('.remove-order');
+        removeButton.addEventListener('click', function() {
+            const index = orderList.findIndex(order => order.name === name && order.price === price);
+            if (index !== -1) {
+                orderList.splice(index, 1); // Eliminar el pedido del array
+            }
+            orderElement.remove(); // Eliminar el elemento de la lista
+            updateTotalPrice(); // Actualizar el total después de eliminar un pedido
+
+            if (pedidoContainer.children.length === 1) { // Solo el total queda
+                const emptyMessage = document.createElement('li');
+                emptyMessage.className = 'order-item';
+                emptyMessage.id = 'empty-message';
+                emptyMessage.textContent = "Lista de pedidos vacía. Por favor, agregue un pedido para su mesa.";
+                pedidoContainer.insertBefore(emptyMessage, totalElement);
+            }
+        });
+
+        // Actualizar el total después de agregar el pedido
+        updateTotalPrice();
+    }
+
+    // Función para actualizar el total de la compra
+    function updateTotalPrice() {
+        const totalPrice = orderList.reduce((total, order) => total + order.price, 0);
+        totalElement.textContent = `Total: $${totalPrice.toLocaleString('es-CL')}`;
+    }
+
+    // Función para confirmar el pedido terminado
+    confirmOrderButton.addEventListener('click', function() {
+        if (orderList.length > 0) {
+            // Guardar los pedidos en localStorage
+            localStorage.setItem('orderList', JSON.stringify(orderList));
+            alert("Pedido confirmado y terminado!");
+            
+            // Vaciar la lista de pedidos visualmente
+            pedidoContainer.innerHTML = ''; // Elimina todos los elementos del contenedor de pedidos
+            pedidoContainer.appendChild(totalElement); // Reagregar el total al contenedor
+            
+            // Permitir agregar nuevos productos sin perder los anteriores
+            orderList = [];  // Limpiar el array de pedidos pero permitir nuevas agregaciones
+            totalElement.textContent = 'Total: $0'; // Restablecer el total a cero
+
+            // Agregar mensaje de "Lista vacía" al vacío
+            const emptyMessage = document.createElement('li');
+            emptyMessage.className = 'order-item';
+            emptyMessage.id = 'empty-message';
+            emptyMessage.textContent = "Lista de pedidos vacía. Por favor, agregue un pedido para su mesa.";
+            pedidoContainer.appendChild(emptyMessage);
+        } else {
+            alert("Por favor, agregue un pedido antes de confirmar.");
+        }
+    });
+});
+
+</script>
+
+<div class="footer">
+    <img class="grape footer-image" src="img/pngwing.com (1).png" alt="Grape">
+    
+  
+    
+    <div class="a">         
+          <h4>CONTACTO</h4>
+          <ul>
+              <li>+569 873988389</li>
+              <li>+569 354054854</li>
+              
+          </ul>
+      </div>
+    
+      <div class="b">
+          <h4>UBICACIN</h4>
+          <ul>
+            
+              <li><span><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+              <p> Isidora Goyenechea 3275, 7550129 Las Condes, </p>
+              <p>Región Metropolitana</p>
+              </span></li>
+            
+            
+              <li><span><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+              <p>contacto@sigloxxi.com</p>
+              </span></li>
+            
+             
+            
+          </ul>
+      </div>
+    
+      <div class="c">
+          <h4>SOCIAL</h4>
+          <ul>
+              <li>Instagram</li>
+              <li>Facebook</li>
+              <li>Twitter</li>
+              <li>Wathsapp</li>
+              <li>YouTube</li>
+          </ul>
+      </div>
+      <div class="c">
+        <h4>HORARIO ATENCION</h4>
+        <ul>
+            <li>Domingo a jueves </li>
+            <li>10:00hrs a 19:00hrs</li>
+            <li>__________</li>
+            <li>Viernes y sabados</li>
+            <li>11:00hrs a 23:00hrs</li>
+           
+        </ul>
+        
+    </div>
+    
+      <p> Siglo "XXI" Restaurante </p>
+    </div<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Siglo XXI - Bodega</title>
+        <link rel="stylesheet" href="bodega.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="con">
+                    <h1>Siglo "XXI"<span>Restaurante</span></h1>
+                    <ul>
+                        <li><a href="bodega.html">INICIO</a></li>
+                        <li><a href="proveedor.html">  PEDIDO A PROVEEDOR</a></li>
+                        <li class="logout-item">
+                            <a href="inicio.php" class="logout-button">CERRAR SESIÓN</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="header-center">
+                <div class="con">
+                    <h2>Siglo "XXI"<span>Restaurante</span></h2>
+                    <p>¡Bienvenidos a Restaurante Siglo XXI! Nos alegra que nos visiten y sean parte de una experiencia culinaria única, donde la pasión por la gastronomía se mezcla con un ambiente acogedor y moderno.</p>
+                </div>
+            </div>
+        </header>
+    
+        <main>
+            <section class="inventory-section">
+                
+                
+                <div class="con">
+                    <h3>Productos en Bodega</h3>
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Categoría</th>
+                                <th>Eliminar producto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tomates</td>
+                                <td>50 kg</td>
+                                <td>Verduras</td>
+                                <td><button onclick="removeProduct(this)">Eliminar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Aceite de Oliva</td>
+                                <td>20 litros</td>
+                                <td>Aceites</td>
+                                <td><button onclick="removeProduct(this)">Eliminar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Arroz</td>
+                                <td>100 kg</td>
+                                <td>Cereales</td>
+                                <td><button onclick="removeProduct(this)">Eliminar</button></td>
+                            </tr>
+                            <tr>
+                                <td>Carne de Res</td>
+                                <td>30 kg</td>
+                                <td>Carnes</td>
+                                <td><button onclick="removeProduct(this)">Eliminar</button></td>
+                            </tr>
+                            <!-- Puedes agregar más filas según sea necesario -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="con">
+                    <h3>Agregar Producto</h3>
+                    <form id="addProductForm">
+                        <input type="text" id="productName" placeholder="Producto" required>
+                        <input type="text" id="productQuantity" placeholder="Cantidad" required>
+                        <input type="text" id="productCategory" placeholder="Categoría" required>
+                        <button type="button" onclick="addProduct()">Agregar Producto</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    
+        <footer>
+            <div class="footer">
+                <img class="grape footer-image" src="img/pngwing.com (1).png" alt="Grape">
+                <div class="a">         
+                    <h4>CONTACTO</h4>
+                    <ul>
+                        <li>+569 873988389</li>
+                        <li>+569 354054854</li>
+                    </ul>
+                </div>
+                <div class="b">
+                    <h4>UBICACIÓN</h4>
+                    <ul>
+                        <li><span><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                            <p>Isidora Goyenechea 3275, 7550129 Las Condes,</p>
+                            <p>Región Metropolitana</p></span>
+                        </li>
+                        <li><span><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                            <p>contacto@sigloxxi.com</p>
+                        </span></li>
+                    </ul>
+                </div>
+                <div class="c">
+                    <h4>SOCIAL</h4>
+                    <ul>
+                        <li>Instagram</li>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>WhatsApp</li>
+                        <li>YouTube</li>
+                    </ul>
+                </div>
+                <div class="c">
+                    <h4>HORARIO ATENCIÓN</h4>
+                    <ul>
+                        <li>Domingo a jueves: 10:00 - 19:00 hrs</li>
+                        <li>Viernes y sábados: 11:00 - 23:00 hrs</li>
+                    </ul>
+                </div>
+                <p>Siglo "XXI" Restaurante</p>
+            </div>
+        </footer>
+    </body>
+    <script>
+        function addProduct() {
+            // Obtener los valores del formulario
+            const productName = document.getElementById("productName").value;
+            const productQuantity = document.getElementById("productQuantity").value;
+            const productCategory = document.getElementById("productCategory").value;
+    
+            // Verificar que los campos no estén vacíos
+            if (productName && productQuantity && productCategory) {
+                // Crear una nueva fila en la tabla
+                const table = document.querySelector(".product-table tbody");
+                const newRow = table.insertRow();
+    
+                // Crear las celdas y asignar los valores
+                newRow.innerHTML = `
+                    <td>${productName}</td>
+                    <td>${productQuantity}</td>
+                    <td>${productCategory}</td>
+                    <td><button onclick="removeProduct(this)">Eliminar</button></td>
+                `;
+    
+                // Limpiar el formulario después de agregar el producto
+                document.getElementById("addProductForm").reset();
+            } else {
+                alert("Por favor, completa todos los campos.");
+            }
+        }
+    
+        function removeProduct(button) {
+            // Eliminar la fila correspondiente
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+    
+    </html>
+    >

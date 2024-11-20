@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siglo XXI - Administración</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="cocina.css">
+    <link rel="stylesheet" href="lista.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="con">
+                <h1>Siglo "XXI"<span>Restaurante</span></h1>
+                <ul>
+                    <li><a href="admin.html">INICIO</a></li>
+                   
+                    <li><a href="indexadmin.html">CLIENTE</a></li>
+                    <li><a href="bodegaadmin.html">BODEGA</a></li>
+                    <li><a href="finanzasadmin.html">FINANZAS</a></li>
+                    <li class="logout-item">
+                        <a href="inicio.php" class="logout-button">CERRAR SESIÓN</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section class="orders">
+            <h2>Lista de Pedidos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mesa</th>
+                        <th>Pedido</th>
+                        <th>Estado</th>
+                        <th>Acción</th> <!-- Nueva columna para los botones -->
+                    </tr>
+                </thead>
+                <tbody id="pedido-lista">
+                    <!-- Los pedidos se cargarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </section>
+    </header>
+
+    <script>
+   document.addEventListener('DOMContentLoaded', function () {
+    // Recuperamos los pedidos desde localStorage
+    const pedidos = JSON.parse(localStorage.getItem('orderList')) || [];
+
+    // Mostrar los pedidos en la tabla de cocina
+    const pedidoLista = document.getElementById('pedido-lista');
+    if (pedidos.length > 0) {
+        pedidos.forEach((pedido, index) => {
+            const row = document.createElement('tr');
+            row.id = `pedido-${index + 1}`;
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${pedido.name}</td>
+                <td class="status" style="color: ${getColor(pedido.status || 'En Cola')}">${pedido.status || 'En Cola'}</td>
+                <td>
+                    <button class="change-status" data-pedido="${index + 1}">Cambiar Estado</button>
+                    <button class="entregado" data-pedido="${index + 1}">Entregado</button>
+                </td>
+            `;
+            pedidoLista.appendChild(row);
+        });
+    } else {
+        const row = document.createElement('tr');
+        row.innerHTML = '<td colspan="4">No hay pedidos disponibles.</td>';
+        pedidoLista.appendChild(row);
+    }
+
+    // Función para obtener el color según el estado
+    function getColor(status) {
+        switch (status) {
+            case 'Preparando': return '#ff9900';
+            case 'Listo para Servir': return '#4CAF50';
+            case 'En Cola': return '#ff0000';
+            default: return '#000000';
+        }
+    }
+
+    // Manejar el cambio de estado de los pedidos
+    document.querySelectorAll('.change-status').forEach(button => {
+        button.addEventListener('click', function () {
+            const pedidoId = this.getAttribute('data-pedido');
+            const statusCell = document.querySelector(`#pedido-${pedidoId} .status`);
+            const currentStatus = statusCell.textContent.trim();
+
+            // Cambiar el estado del pedido
+            const newStatus = currentStatus === 'Preparando' ? 'Listo para Servir' :
+                currentStatus === 'Listo para Servir' ? 'En Cola' : 'Preparando';
+
+            // Actualizar la celda del estado
+            statusCell.textContent = newStatus;
+            statusCell.style.color = getColor(newStatus);
+
+            // Actualizar el estado en localStorage
+            pedidos[pedidoId - 1].status = newStatus;
+            localStorage.setItem('orderList', JSON.stringify(pedidos));
+        });
+    });
+
+   // Manejar el botón "Entregado" para registrar el ingreso sin afectar historial
+    document.querySelectorAll('.entregado').forEach(button => {
+        button.addEventListener('click', function () {
+            const pedidoId = this.getAttribute('data-pedido');
+            const pedidoRow = document.getElementById(`pedido-${pedidoId}`);
+            const pedido = pedidos[pedidoId - 1]; // Obtén el pedido entregado
+            const producto = pedido.name;
+            const precio = pedido.price || 0; // Asegúrate de que el pedido tenga un precio
+            const fecha = new Date().toLocaleDateString();
+
+            // Guardar el ingreso en finanzas
+            const ingreso = { fecha, precio, producto };
+            const ingresos = JSON.parse(localStorage.getItem('ingresos')) || [];
+            ingresos.push(ingreso);
+            localStorage.setItem('ingresos', JSON.stringify(ingresos));
+
+            // Guardar el ingreso en historial (sin eliminarlo)
+            const historial = JSON.parse(localStorage.getItem('historial')) || [];
+            historial.push(ingreso);
+            localStorage.setItem('historial', JSON.stringify(historial));
+
+            // Eliminar el pedido de la lista de cocina
+            pedidoRow.remove(); // Eliminar la fila de la tabla
+
+            // Eliminar el pedido de localStorage
+            pedidos.splice(pedidoId - 1, 1);
+            localStorage.setItem('orderList', JSON.stringify(pedidos));
+
+            // Actualizar los índices de los pedidos restantes
+            const rows = document.querySelectorAll('#pedido-lista tr');
+            rows.forEach((row, index) => {
+                row.querySelector('td').textContent = index + 1;
+                row.id = `pedido-${index + 1}`;
+                const changeStatusButton = row.querySelector('.change-status');
+                changeStatusButton.setAttribute('data-pedido', index + 1);
+                const entregadoButton = row.querySelector('.entregado');
+                entregadoButton.setAttribute('data-pedido', index + 1);
+            });
+
+            // Actualizar el total de pedidos y pendientes
+            actualizarTotales();
+        });
+    });
+
+    // Actualización de los totales en el panel
+    function actualizarTotales() {
+        document.getElementById('totalPedidos').textContent = pedidos.length;
+        const pendientes = pedidos.filter(pedido => pedido.status !== 'Servido').length;
+        document.getElementById('pedidosPendientes').textContent = pendientes;
+    }
+
+    actualizarTotales();
+});
+
+
+    </script>
+    
+
+    <div class="footer">
+        <img class="grape footer-image" src="img/pngwing.com (1).png" alt="Grape">
+        <div class="a">
+            <h4>CONTACTO</h4>
+            <ul>
+                <li>+569 873988389</li>
+                <li>+569 354054854</li>
+            </ul>
+        </div>
+        <div class="b">
+            <h4>UBICACIÓN</h4>
+            <ul>
+                <li><span><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                <p> Isidora Goyenechea 3275, 7550129 Las Condes, </p>
+                <p>Región Metropolitana</p>
+                </span></li>
+                <li><span><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                <p>contacto@sigloxxi.com</p>
+                </span></li>
+            </ul>
+        </div>
+        <div class="c">
+            <h4>SOCIAL</h4>
+            <ul>
+                <li>Instagram</li>
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>Whatsapp</li>
+                <li>YouTube</li>
+            </ul>
+        </div>
+        <div class="c">
+            <h4>HORARIO ATENCIÓN</h4>
+            <ul>
+                <li>Domingo a jueves</li>
+                <li>10:00hrs a 19:00hrs</li>
+                <li>__________</li>
+                <li>Viernes y sábados</li>
+                <li>11:00hrs a 23:00hrs</li>
+            </ul>
+        </div>
+        <p> Siglo "XXI" Restaurante </p>
+    </div>
+
+</body>
+</html>

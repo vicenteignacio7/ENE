@@ -1,0 +1,411 @@
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Economica|Ubuntu|Ubuntu+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Advent+Pro|Allura|Amatic+SC|Bad+Script|Calligraffitti|Caveat|Cinzel|Clicker+Script|Comfortaa|Cookie|Dancing+Script|Dosis|Economica|Expletus+Sans|Great+Vibes|Handlee|Julius+Sans+One|Jura|Kaushan+Script|Khand|Lemonada|Marck+Script|Megrim|Oleo+Script|Petit+Formal+Script|Pompiere|Rajdhani|Sacramento|Shrikhand|Wire+One');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all .4s ease-in-out;
+    color: white; /* Color de todas las letras a blanco */
+}
+.table-content {
+    width: 450px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+td {
+    width: 100px;
+}
+.logout-button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #ff3333;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+}
+/* container  = con */
+
+.con {
+    width: 80%;
+    margin: auto;
+    
+
+}
+/* Estilos generales para el contenedor */
+.inventory-section .con {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+   
+}
+
+h3 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Estilos para la tabla */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.product-table th, .product-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.product-table thead th {
+    background-color: #000000;
+    color: white;
+    font-weight: bold;
+}
+
+.product-table tbody tr:nth-child(even) {
+    background-color: #000000;
+}
+.product-table button {
+    padding: 2px 3px; /* Aumenta el padding para hacerlo más grande */
+    font-size: 18px; /* Aumenta el tamaño de la fuente */
+    background-color: #ff0000; /* Color de fondo rojo */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.product-table button:hover {
+    background-color: #ff6969; /* Color al pasar el mouse */
+}
+/* Estilos para el formulario de agregar productos */
+#addProductForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: 20px auto; /* Centra el formulario */
+    padding: 20px;
+    background-color: #f5f5f5; /* Fondo suave */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#addProductForm input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: black;
+}
+
+#addProductForm input:focus {
+    border-color: #000000; /* Color de borde al enfocar */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#addProductForm button {
+    padding: 10px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#addProductForm button:hover {
+    background-color: #d0d0d0;
+    color: #000;
+}
+
+#addProductForm h3 {
+    text-align: center;
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+/* Estilos para los bordes */
+.product-table th, .product-table td {
+    border-bottom: 1px solid #ddd;
+}
+
+.product-table th {
+    border-top: 1px solid #ddd;
+}
+
+/* Ajustes de fuente */
+.product-table th {
+    font-size: 1.1em;
+}
+
+.product-table td {
+    font-size: 0.95em;
+}
+
+/* Clear */
+
+.clear {
+    clear: both;
+}
+
+/* body */
+
+body {
+    background: linear-gradient(135deg, #000000, #bcbcbc); 
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.pineapple {
+    width: 30%;
+    height: 50%;
+    position: absolute;
+    top: -5%;
+    left: 70%;
+}
+
+header {
+    background-image: linear-gradient(to bottom, #000000, #555555); /* Degradado de negro a gris */
+    width: 100%;
+    height: 550px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+header nav {
+    background-color: #2A2424;
+    color: #197e0b;
+    position: relative;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+header i {
+    float: right;
+    padding: 10px;
+}
+
+header nav h1 {
+    font-size: 40px;
+    position: absolute;
+    top: 0;
+    left: 50px;
+    font-family: 'Megrim', cursive;
+}
+
+header nav h1 > span {
+    font-family: 'Clicker Script', cursive;
+    font-size: 70%;
+}
+
+header nav ul {
+    background-color: #2A2424;
+    overflow: hidden;
+    padding: 10px;
+}
+
+header nav ul li {
+    font-family: 'Abel', sans-serif;
+    font-size: 135%;
+    float: left;
+    margin: 5px 15px 5px 15px;
+    letter-spacing: 1px;
+    list-style: none;
+    transition: .4s ease-in-out;
+    border-bottom: 3px solid transparent;
+    position: relative;
+    left: 25%;
+}
+
+header nav ul li:hover {
+    color: #fffff7;
+    cursor: pointer;
+    border-bottom: 3px solid #eee;
+    transform: scale(1.2); /* Aumenta el tamaño al 110% */
+    transition: transform 0.3s ease; 
+}
+
+/* end NavBar */
+
+header .header-center {
+    text-align: center;
+    color: #D6D5B3;
+    margin: 10%;
+    text-shadow: 1px 1px 1px #000;
+    opacity: 90%;
+    background-color: rgba(11, 11, 11, .60);
+}
+
+header .header-center h2 {
+    font-size: 600%;
+    text-shadow: 1px 1px 1px #000;
+    font-family: 'Pompiere', cursive;
+  
+}
+
+header h2 > span {
+    font-family: 'Clicker Script', cursive;
+    font-size: 50%;
+    
+}
+
+header .header-center p {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+header .header-center button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    border: none;
+    padding: 12px;
+    background-color: transparent;
+    border: 9px Double;
+    color: #C7CFC6;
+    border-color: #C7CFC6;
+    outline: none;
+    background-color: #2A2424;
+    font-family: 'Pompiere', cursive;
+}
+
+header .header-center button:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #000;
+}
+
+/* Start */
+
+
+
+
+
+
+.one,
+.two {
+    overflow: hidden;
+    background-color: #2A2424;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* Start Footer  */
+.footer {
+    background-color: #000000; /* Fondo negro */
+    color: #fff;
+    text-align: center;
+    padding: 1em 4em;
+    line-height: 1.5em;
+    font-size: 1.8em;
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.footer h4 {
+    padding-bottom: 20px;
+    padding-top: 15px;
+}
+
+.footer .a h4 {
+    color: #ffffff;
+}
+
+.footer .b h4 {
+    color: #FC6453;
+}
+
+.footer .c h4 {
+    color: rgb(226, 224, 139);
+}
+
+.footer .a ul li:hover,
+.footer .b ul li:hover,
+.footer .c ul li:hover {
+    color: #C7CFC6;
+}
+
+/* End Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Ajusta el espacio entre los elementos */
+}
+
+/* Estilos para nav */
+header nav {
+    background-color: #2A2424;
+    color: #1eff00;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header nav ul {
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    align-items: center;
+}
+
+/* Empuja el botón al extremo derecho */
+
+
+/* Modificaciones para el footer */
+.footer {
+    background-color: #000000; /* Fondo negro */
+    color: #fff;
+    padding: 10px; /* Reduce el padding para hacer el footer más pequeño */
+    text-align: left; /* Alinea el contenido a la izquierda */
+    display: flex; /* Usar flexbox para facilitar el alineamiento */
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    flex-wrap: wrap; /* Permite que el contenido se ajuste en varias líneas si es necesario */
+}
+
+.footer img {
+    width: 100%;
+    max-width: 200px; /* Mantiene el límite de tamaño */
+    height: auto;
+}
+
+
+.footer h4 {
+    margin-bottom: 10px; /* Reduce el margen inferior de los encabezados */
+}
+
+.footer ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0; /* Elimina el padding */
+}
+
+.footer ul li {
+    margin: 3px 0; /* Ajusta el margen entre los elementos de la lista */
+}
+
+

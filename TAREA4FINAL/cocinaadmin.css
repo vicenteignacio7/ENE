@@ -1,0 +1,994 @@
+@import url('https://fonts.googleapis.com/css?family=Economica|Ubuntu|Ubuntu+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Advent+Pro|Allura|Amatic+SC|Bad+Script|Calligraffitti|Caveat|Cinzel|Clicker+Script|Comfortaa|Cookie|Dancing+Script|Dosis|Economica|Expletus+Sans|Great+Vibes|Handlee|Julius+Sans+One|Jura|Kaushan+Script|Khand|Lemonada|Marck+Script|Megrim|Oleo+Script|Petit+Formal+Script|Pompiere|Rajdhani|Sacramento|Shrikhand|Wire+One');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all .4s ease-in-out;
+    color: white; /* Color de todas las letras a blanco */
+}
+.logout-button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #ff3333;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+}
+/* container  = con */
+.logout-container {
+    margin-left:0; /* Empuja el contenedor al extremo derecho */
+}
+.logout-item {
+    margin-left: 0; /* Esto empuja el botón a la derecha */
+}
+.con {
+    width: 80%;
+    margin: auto;
+
+}
+
+/* Clear */
+
+.clear {
+    clear: both;
+}
+
+/* body */
+
+body {
+    background: #f0f0f0; /* Fondo gris claro */
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.pineapple {
+    width: 30%;
+    height: 50%;
+    position: absolute;
+    top: -5%;
+    left: 70%;
+}
+
+header {
+    background-image: linear-gradient(to bottom, #000000, #555555); /* Degradado de negro a gris */
+    width: 100%;
+    height: 550px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+header nav {
+    background-color: #2A2424;
+    color: #1eff00;
+    position: relative;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+header i {
+    float: right;
+    padding: 10px;
+}
+
+header nav h1 {
+    font-size: 40px;
+    position: absolute;
+    top: 0;
+    left: 50px;
+    font-family: 'Megrim', cursive;
+}
+
+header nav h1 > span {
+    font-family: 'Clicker Script', cursive;
+    font-size: 70%;
+}
+
+header nav ul {
+    background-color: #2A2424;
+    overflow: hidden;
+    padding: 10px;
+}
+
+header nav ul li {
+    font-family: 'Abel', sans-serif;
+    font-size: 135%;
+    float: left;
+    margin: 5px 15px 5px 15px;
+    letter-spacing: 1px;
+    list-style: none;
+    transition: .4s ease-in-out;
+    border-bottom: 3px solid transparent;
+    position: relative;
+    left: 25%;
+}
+
+header nav ul li:hover {
+    color: #fffff7;
+    cursor: pointer;
+   
+    transform: scale(1.2); /* Aumenta el tamaño al 110% */
+    transition: transform 0.3s ease; 
+}
+
+/* end NavBar */
+
+header .header-center {
+    text-align: center;
+    color: #D6D5B3;
+    margin: 10%;
+    text-shadow: 1px 1px 1px #000;
+    opacity: 90%;
+    background-color: rgba(11, 11, 11, .60);
+}
+
+header .header-center h2 {
+    font-size: 600%;
+    text-shadow: 1px 1px 1px #000;
+    font-family: 'Pompiere', cursive;
+}
+
+header h2 > span {
+    font-family: 'Clicker Script', cursive;
+    font-size: 50%;
+}
+
+header .header-center p {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+header .header-center button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    border: none;
+    padding: 12px;
+    background-color: transparent;
+    border: 9px Double;
+    color: #C7CFC6;
+    border-color: #C7CFC6;
+    outline: none;
+    background-color: #2A2424;
+    font-family: 'Pompiere', cursive;
+}
+
+header .header-center button:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #000;
+}
+
+/* Start */
+
+.Our-Dishes {
+    background-image: linear-gradient(to left, #2e2e2e 0%, #ffffff 50%, #2e2e2e 100%);
+}
+
+
+.Our-Dishes h3 {
+    position: relative;
+    text-align: center;
+    font-size: 85px;
+    color: #2A2424;
+}
+
+.Our-Dishes h3:hover {
+    letter-spacing: 10px;
+    cursor: pointer;
+}
+
+.Our-Dishes .info-dishes {
+    text-align: center;
+    font-size: 120%;
+    color: rgb(255, 255, 255);
+    background-color: #2A2424;
+    width: 100%;
+}
+
+.Our-Dishes .info-dishes i {
+    color: rgb(255, 255, 255);
+    margin-left: 30px;
+    padding: 5px;
+}
+
+.Our-Dishes .post {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    background-image: linear-gradient(to bottom, #ffffff, #040404);
+    display: inline-block;
+    height: 480px;
+    width: 300px;
+    margin: 15px;
+    position: relative;
+    top: 30px;
+    left: 5%;
+    overflow: hidden;
+    border: 5px solid #D6D5B3;
+}
+
+.Our-Dishes .post .con2 {
+    width: 100%;
+    padding: 1px;
+}
+
+.Our-Dishes .post .con2 i {
+    padding: 10px 1px 0 5px;
+    letter-spacing: 1px;
+    transition: .5s;
+    margin-left: 10px;
+}
+
+.Our-Dishes .post img {
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+}
+
+.Our-Dishes .post img:hover {
+    transform: scale(1.65);
+}
+
+.Our-Dishes .post h4 {
+    padding: 7px 0 5px 7px;
+    font-size: 15px;
+}
+
+.Our-Dishes .post p {
+    padding: 3px 0 0 7px;
+    height: 60px;
+    overflow: hidden;
+}
+
+/* The button */
+
+.Our-Dishes button {
+    padding: 7px;
+    background-color: #2A2424;
+    color: #ffffff;
+    position: absolute;
+    top: 94%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
+}
+
+.Our-Dishes button:hover {
+    background-color: transparent;
+    color: #000;
+    cursor: pointer;
+    border-right: 2px solid #2A2424;
+    border-left: 2px solid #2A2424;
+}
+.orders {
+    background-color: #2A2424;
+    color: white;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.order-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between; /* Distribuir espacio entre elementos */
+    align-items: center; /* Alinear verticalmente al centro */
+    padding: 10px;
+    border-bottom: 1px solid #555;
+    transition: background-color 0.3s;
+}
+
+.order-item:hover {
+    background-color: #444;
+}
+
+.clear-orders {
+    background-color: #ff3333;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.clear-orders:hover {
+    background-color: #cc0000;
+}
+
+
+.confirm-order {
+    background-color: #0ab804; /* Color de fondo azul */
+    border: none;
+    color: white; /* Color de la fuente blanco */
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.confirm-order:hover {
+    background-color: #0ab804; /* Color de fondo azul oscuro al pasar el mouse */
+    color: rgb(0, 0, 0);
+}
+
+.remove-order {
+    background-color: #ff0000; /* Color de fondo verde */
+    color: #ffffff; /* Color de la fuente blanco */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
+.remove-order:hover {
+    background-color: #000000; /* Color de fondo verde oscuro al pasar el mouse */
+}
+
+
+/* Contact */
+
+.testimonials {
+    
+        display: flex; /* Utiliza flexbox para distribuir los elementos */
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una línea */
+        justify-content: space-between; /* Distribuye el espacio entre los elementos */
+        align-items: center; /* Alinea verticalmente los elementos */
+        margin: 20px; /* Agrega un margen alrededor de la sección */
+}
+
+.testimonials p {
+    text-align: center;
+    font-size: 130%;
+    line-height: 1.5;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.tts {
+    flex: 1 1 45%; /* Hace que cada testimonio ocupe un 45% del contenedor */
+    margin: 10px; /* Margen entre testimonios */
+    display: flex; /* Utiliza flexbox para la imagen y el texto del testimonio */
+    align-items: center; /* Alinea la imagen y el texto verticalmente */
+    background: #f9f9f9; /* Fondo claro para diferenciar los testimonios */
+    border-radius: 8px; /* Esquinas redondeadas */
+    padding: 10px; /* Espaciado interno */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+.tts-right {
+    flex: 1; /* Permite que el texto ocupe el resto del espacio */
+}
+.tts > div {
+    flex-direction: row;
+    width: 50%;
+    text-align: center;
+}
+
+.tts h4 {
+    margin: 20px;
+    font-family: 'Bad Script', cursive;
+    font-size: 200%;
+}
+
+.tts p {
+    font-family: 'Pompiere', cursive;
+    font-size: 200%;
+    color: rgb(255, 255, 255);
+    margin: 10px;
+}
+.tts img {
+    width: 60px; /* Ancho fijo para las imágenes */
+    height: 60px; /* Altura fija para las imágenes */
+    border-radius: 50%; /* Imagen circular */
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.one,
+.two {
+    overflow: hidden;
+    background-color: #2A2424;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* End */
+
+/* THE Footer */
+
+/* 4.70
+17.95
+ */
+
+/* Start Footer  */
+.footer {
+    display: flex;
+    flex-wrap: wrap; /* Ajusta el contenido si es necesario */
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%; /* Asegura que el footer ocupe el ancho total */
+    max-width: 100%; /* Previene cualquier desbordamiento */
+    margin: 0 auto; /* Centra el footer si sobra espacio */
+    padding: 20px;
+    background-color: #000; /* Fondo negro */
+    color: white;
+}
+
+
+.footer div {
+    flex: 0 0 auto; /* Los elementos no se encogen ni se expanden automáticamente */
+    text-align: left; /* Alinea el texto a la izquierda */
+    min-width: 150px; /* Asegura un ancho mínimo para cada sección */
+}
+
+.footer img {
+    max-width: 150px; /* Ajusta el tamaño de las imágenes */
+    height: auto;
+    margin-right: 20px; /* Espacio a la derecha de la imagen */
+}
+
+.footer h4 {
+    font-size: 1.2em; /* Ajusta el tamaño del encabezado */
+    margin-bottom: 10px;
+}
+
+.footer ul {
+    list-style: none; /* Elimina los puntos de las listas */
+    padding: 0;
+    margin: 0;
+}
+
+.footer ul li {
+    margin: 5px 0; /* Espaciado entre elementos de la lista */
+}
+
+.footer .a h4 {
+    color: #ffffff; /* Estilo adicional */
+}
+
+.footer .b h4 {
+    color: #FC6453; /* Estilo adicional */
+}
+
+.footer .c h4 {
+    color: rgb(226, 224, 139); /* Estilo adicional */
+}
+
+.footer ul li:hover {
+    color: #C7CFC6; /* Efecto hover */
+}
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Economica|Ubuntu|Ubuntu+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Advent+Pro|Allura|Amatic+SC|Bad+Script|Calligraffitti|Caveat|Cinzel|Clicker+Script|Comfortaa|Cookie|Dancing+Script|Dosis|Economica|Expletus+Sans|Great+Vibes|Handlee|Julius+Sans+One|Jura|Kaushan+Script|Khand|Lemonada|Marck+Script|Megrim|Oleo+Script|Petit+Formal+Script|Pompiere|Rajdhani|Sacramento|Shrikhand|Wire+One');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all .4s ease-in-out;
+    color: white; /* Color de todas las letras a blanco */
+}
+.logout-button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #ff3333;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+}
+/* container  = con */
+.logout-container {
+    margin-left: auto; /* Empuja el contenedor al extremo derecho */
+}
+.con {
+    width: 80%;
+    margin: auto;
+
+}
+
+/* Clear */
+
+.clear {
+    clear: both;
+}
+
+/* body */
+
+body {
+    background: #f0f0f0; /* Fondo gris claro */
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.pineapple {
+    width: 30%;
+    height: 50%;
+    position: absolute;
+    top: -5%;
+    left: 70%;
+}
+
+header {
+    background-image: linear-gradient(to bottom, #000000, #555555); /* Degradado de negro a gris */
+    width: 100%;
+    height: 550px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+header nav {
+    background-color: #2A2424;
+    color: #1eff00;
+    position: relative;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+header i {
+    float: right;
+    padding: 10px;
+}
+
+header nav h1 {
+    font-size: 40px;
+    position: absolute;
+    top: 0;
+    left: 50px;
+    font-family: 'Megrim', cursive;
+}
+
+header nav h1 > span {
+    font-family: 'Clicker Script', cursive;
+    font-size: 70%;
+}
+
+header nav ul {
+    background-color: #2A2424;
+    overflow: hidden;
+    padding: 10px;
+}
+
+header nav ul li {
+    font-family: 'Abel', sans-serif;
+    font-size: 135%;
+    float: left;
+    margin: 5px 15px 5px 15px;
+    letter-spacing: 1px;
+    list-style: none;
+    transition: .4s ease-in-out;
+    border-bottom: 3px solid transparent;
+    position: relative;
+    left: 25%;
+}
+
+header nav ul li:hover {
+    color: #fffff7;
+    cursor: pointer;
+    border-bottom: 3px solid #eee;
+    transform: scale(1.2); /* Aumenta el tamaño al 110% */
+    transition: transform 0.3s ease; 
+}
+
+/* end NavBar */
+
+header .header-center {
+    text-align: center;
+    color: #D6D5B3;
+    margin: 10%;
+    text-shadow: 1px 1px 1px #000;
+    opacity: 90%;
+    background-color: rgba(11, 11, 11, .60);
+}
+
+header .header-center h2 {
+    font-size: 600%;
+    text-shadow: 1px 1px 1px #000;
+    font-family: 'Pompiere', cursive;
+}
+
+header h2 > span {
+    font-family: 'Clicker Script', cursive;
+    font-size: 50%;
+}
+
+header .header-center p {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+header .header-center button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    border: none;
+    padding: 12px;
+    background-color: transparent;
+    border: 9px Double;
+    color: #C7CFC6;
+    border-color: #C7CFC6;
+    outline: none;
+    background-color: #2A2424;
+    font-family: 'Pompiere', cursive;
+}
+
+header .header-center button:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #000;
+}
+
+/* Start */
+
+.Our-Dishes {
+    background-image: linear-gradient(to left, #2e2e2e 0%, #ffffff 50%, #2e2e2e 100%);
+}
+
+
+.Our-Dishes h3 {
+    position: relative;
+    text-align: center;
+    font-size: 85px;
+    color: #2A2424;
+}
+
+.Our-Dishes h3:hover {
+    letter-spacing: 10px;
+    cursor: pointer;
+}
+
+.Our-Dishes .info-dishes {
+    text-align: center;
+    font-size: 120%;
+    color: rgb(255, 255, 255);
+    background-color: #2A2424;
+    width: 100%;
+}
+
+.Our-Dishes .info-dishes i {
+    color: rgb(255, 255, 255);
+    margin-left: 30px;
+    padding: 5px;
+}
+
+.Our-Dishes .post {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    background-image: linear-gradient(to bottom, #ffffff, #040404);
+    display: inline-block;
+    height: 480px;
+    width: 300px;
+    margin: 15px;
+    position: relative;
+    top: 30px;
+    left: 5%;
+    overflow: hidden;
+    border: 5px solid #D6D5B3;
+}
+
+.Our-Dishes .post .con2 {
+    width: 100%;
+    padding: 1px;
+}
+
+.Our-Dishes .post .con2 i {
+    padding: 10px 1px 0 5px;
+    letter-spacing: 1px;
+    transition: .5s;
+    margin-left: 10px;
+}
+
+.Our-Dishes .post img {
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+}
+
+.Our-Dishes .post img:hover {
+    transform: scale(1.65);
+}
+
+.Our-Dishes .post h4 {
+    padding: 7px 0 5px 7px;
+    font-size: 15px;
+}
+
+.Our-Dishes .post p {
+    padding: 3px 0 0 7px;
+    height: 60px;
+    overflow: hidden;
+}
+
+/* The button */
+
+.Our-Dishes button {
+    padding: 7px;
+    background-color: #2A2424;
+    color: #ffffff;
+    position: absolute;
+    top: 94%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
+}
+
+.Our-Dishes button:hover {
+    background-color: transparent;
+    color: #000;
+    cursor: pointer;
+    border-right: 2px solid #2A2424;
+    border-left: 2px solid #2A2424;
+}
+.orders {
+    background-color: #2A2424;
+    color: white;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.order-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between; /* Distribuir espacio entre elementos */
+    align-items: center; /* Alinear verticalmente al centro */
+    padding: 10px;
+    border-bottom: 1px solid #555;
+    transition: background-color 0.3s;
+}
+
+.order-item:hover {
+    background-color: #444;
+}
+
+.clear-orders {
+    background-color: #ff3333;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.clear-orders:hover {
+    background-color: #cc0000;
+}
+
+
+.confirm-order {
+    background-color: #0ab804; /* Color de fondo azul */
+    border: none;
+    color: white; /* Color de la fuente blanco */
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.confirm-order:hover {
+    background-color: #0ab804; /* Color de fondo azul oscuro al pasar el mouse */
+    color: rgb(0, 0, 0);
+}
+
+.remove-order {
+    background-color: #ff0000; /* Color de fondo verde */
+    color: #ffffff; /* Color de la fuente blanco */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
+.remove-order:hover {
+    background-color: #000000; /* Color de fondo verde oscuro al pasar el mouse */
+}
+
+
+/* Contact */
+
+.testimonials {
+    
+        display: flex; /* Utiliza flexbox para distribuir los elementos */
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una línea */
+        justify-content: space-between; /* Distribuye el espacio entre los elementos */
+        align-items: center; /* Alinea verticalmente los elementos */
+        margin: 20px; /* Agrega un margen alrededor de la sección */
+}
+
+.testimonials p {
+    text-align: center;
+    font-size: 130%;
+    line-height: 1.5;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.tts {
+    flex: 1 1 45%; /* Hace que cada testimonio ocupe un 45% del contenedor */
+    margin: 10px; /* Margen entre testimonios */
+    display: flex; /* Utiliza flexbox para la imagen y el texto del testimonio */
+    align-items: center; /* Alinea la imagen y el texto verticalmente */
+    background: #f9f9f9; /* Fondo claro para diferenciar los testimonios */
+    border-radius: 8px; /* Esquinas redondeadas */
+    padding: 10px; /* Espaciado interno */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+.tts-right {
+    flex: 1; /* Permite que el texto ocupe el resto del espacio */
+}
+.tts > div {
+    flex-direction: row;
+    width: 50%;
+    text-align: center;
+}
+
+.tts h4 {
+    margin: 20px;
+    font-family: 'Bad Script', cursive;
+    font-size: 200%;
+}
+
+.tts p {
+    font-family: 'Pompiere', cursive;
+    font-size: 200%;
+    color: rgb(255, 255, 255);
+    margin: 10px;
+}
+.tts img {
+    width: 60px; /* Ancho fijo para las imágenes */
+    height: 60px; /* Altura fija para las imágenes */
+    border-radius: 50%; /* Imagen circular */
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.one,
+.two {
+    overflow: hidden;
+    background-color: #2A2424;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* End */
+
+/* THE Footer */
+
+/* 4.70
+17.95
+ */
+
+
+
+/* Estilos para nav */
+header nav {
+    background-color: #2A2424;
+    color: #1eff00;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header nav ul {
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    align-items: center;
+}
+
+/* Empuja el botón al extremo derecho */
+header nav ul .logout-item {
+    margin-left: auto; /* Empuja el elemento hacia la derecha */
+}
+
+/* Botón de Cerrar Sesión */
+.logout-button {
+    padding: 10px 20px;
+    color: white;
+    background-color: #ff3333;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+}
+
+
+
+/* Estilos para nav */
+header nav {
+    background-color: #2A2424;
+    color: #1eff00;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header nav ul {
+    display: flex; /* Usa flexbox para facilitar la alineación */
+    gap: 15px; /* Espacio entre los elementos de la lista */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%; /* Asegúrate de que use todo el ancho disponible */
+    align-items: center;
+}
+
+/* Empuja el botón al extremo derecho */
+header nav ul .logout-item {
+    margin-left: 20px; /* Empuja el elemento hacia la derecha */
+}
+
+/* Botón de Cerrar Sesión */
+.logout-button {
+   
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #ff3333;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+}
+/* Modificaciones para el footer */
+
