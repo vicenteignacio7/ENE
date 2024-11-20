@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siglo XXI - Bodega</title>
+    <link rel="stylesheet" href="bodegaadmin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="con">
+                <h1>Siglo "XXI"<span>Restaurante</span></h1>
+                <ul>
+                    <li><a href="bodega.html">INICIO</a></li>
+                   
+                    <li><a href="proveedor.html">  PEDIDO A PROVEEDOR</a></li>
+                    <li class="logout-item">
+                        <a href="inicio.php" class="logout-button">CERRAR SESIÓN</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header-center">
+            <div class="con">
+                <h2>Siglo "XXI"<span>Restaurante</span></h2>
+                <p>¡Bienvenidos a Restaurante Siglo XXI! Nos alegra que nos visiten y sean parte de una experiencia culinaria única, donde la pasión por la gastronomía se mezcla con un ambiente acogedor y moderno.</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="inventory-section">
+            
+            
+            <div class="con">
+                <h3>Productos en Bodega</h3>
+                <table class="product-table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Categoría</th>
+                            <th>Eliminar</th>
+                            <th>Editar </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tomates</td>
+                            <td>50 kg</td>
+                            <td>Verduras</td>
+                            <td><button onclick="removeProduct(this)">Eliminar</button></td>
+                            <td><button class="editar" onclick="editProduct(this)">Editar</button></td>
+                        </tr>
+                        <tr>
+                            <td>Palta</td>
+                            <td>45 kg</td>
+                            <td>Fruta</td>
+                            <td><button onclick="removeProduct(this)">Eliminar</button></td>
+                            <td><button class="editar" onclick="editProduct(this)">Editar</button></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="con">
+                <h3>Agregar Producto</h3>
+                <form id="addProductForm">
+                    <input type="text" id="productName" placeholder="Producto" required>
+                    <input type="text" id="productQuantity" placeholder="Cantidad" required>
+                    <input type="text" id="productCategory" placeholder="Categoría" required>
+                    <button type="button" onclick="addProduct()">Agregar Producto</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <img class="grape footer-image" src="img/pngwing.com (1).png" alt="Grape">
+            <div class="a">         
+                <h4>CONTACTO</h4>
+                <ul>
+                    <li>+569 873988389</li>
+                    <li>+569 354054854</li>
+                </ul>
+            </div>
+            <div class="b">
+                <h4>UBICACIÓN</h4>
+                <ul>
+                    <li><span><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                        <p>Isidora Goyenechea 3275, 7550129 Las Condes,</p>
+                        <p>Región Metropolitana</p></span>
+                    </li>
+                    <li><span><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                        <p>contacto@sigloxxi.com</p>
+                    </span></li>
+                </ul>
+            </div>
+            <div class="c">
+                <h4>SOCIAL</h4>
+                <ul>
+                    <li>Instagram</li>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>WhatsApp</li>
+                    <li>YouTube</li>
+                </ul>
+            </div>
+            <div class="c">
+                <h4>HORARIO ATENCIÓN</h4>
+                <ul>
+                    <li>Domingo a jueves: 10:00 - 19:00 hrs</li>
+                    <li>Viernes y sábados: 11:00 - 23:00 hrs</li>
+                </ul>
+            </div>
+            <p>Siglo "XXI" Restaurante</p>
+        </div>
+    </footer>
+</body>
+<script>
+ function addProduct() {
+    // Obtener los valores del formulario
+    const productName = document.getElementById("productName").value;
+    const productQuantity = document.getElementById("productQuantity").value;
+    const productCategory = document.getElementById("productCategory").value;
+
+    // Verificar que los campos no estén vacíos
+    if (productName && productQuantity && productCategory) {
+        // Crear una nueva fila en la tabla
+        const table = document.querySelector(".product-table tbody");
+        const newRow = table.insertRow();
+
+        // Crear las celdas y asignar los valores
+        const cellName = newRow.insertCell(0);
+        const cellQuantity = newRow.insertCell(1);
+        const cellCategory = newRow.insertCell(2);
+        const cellDelete = newRow.insertCell(3); // Celda para botón Eliminar
+        const cellEdit = newRow.insertCell(4);   // Celda para botón Editar
+
+        cellName.textContent = productName;
+        cellQuantity.textContent = productQuantity;
+        cellCategory.textContent = productCategory;
+
+        // Crear el botón de eliminar
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Eliminar";
+        deleteButton.onclick = function () {
+            removeProduct(newRow);
+        };
+
+        // Crear el botón de editar
+        const editButton = document.createElement("button");
+        editButton.textContent = "Editar";
+        editButton.className = "editar";
+        editButton.onclick = function () {
+            editProduct(newRow);
+        };
+
+        // Agregar los botones a sus celdas correspondientes
+        cellDelete.appendChild(deleteButton);
+        cellEdit.appendChild(editButton);
+
+        // Limpiar el formulario después de agregar el producto
+        document.getElementById("addProductForm").reset();
+    } else {
+        alert("Por favor, completa todos los campos.");
+    }
+}
+
+function removeProduct(button) {
+    // Obtener la fila del botón que fue clicado
+    const row = button.closest("tr");
+    // Eliminar la fila de la tabla
+    row.parentNode.removeChild(row);
+}
+
+
+function editProduct(row) {
+    // Obtener los valores actuales de las celdas
+    const productName = row.cells[0].textContent;
+    const productQuantity = row.cells[1].textContent;
+    const productCategory = row.cells[2].textContent;
+
+    // Llenar el formulario con los valores actuales
+    document.getElementById("productName").value = productName;
+    document.getElementById("productQuantity").value = productQuantity;
+    document.getElementById("productCategory").value = productCategory;
+
+    // Cambiar el texto del botón para indicar que estamos editando
+    const addButton = document.querySelector("#addProductForm button");
+    addButton.textContent = "Guardar Cambios";
+
+    // Cambiar el comportamiento del botón para guardar los cambios en lugar de agregar un producto
+    addButton.onclick = function () {
+        saveChanges(row);
+    };
+}
+
+function saveChanges(row) {
+    // Obtener los nuevos valores del formulario
+    const productName = document.getElementById("productName").value;
+    const productQuantity = document.getElementById("productQuantity").value;
+    const productCategory = document.getElementById("productCategory").value;
+
+    // Actualizar las celdas de la fila con los nuevos valores
+    row.cells[0].textContent = productName;
+    row.cells[1].textContent = productQuantity;
+    row.cells[2].textContent = productCategory;
+
+    // Limpiar el formulario después de guardar los cambios
+    document.getElementById("addProductForm").reset();
+
+    // Restaurar el texto y función del botón para agregar un producto
+    const addButton = document.querySelector("#addProductForm button");
+    addButton.textContent = "Agregar Producto";
+    addButton.onclick = function () {
+        addProduct();
+    };
+}
+
+
+</script>
+
+</html>
