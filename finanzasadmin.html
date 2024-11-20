@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siglo XXI - Finanzas</title>
+    <link rel="stylesheet" href="finanzas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="con">
+                <h1>Siglo "XXI"<span>Restaurante</span></h1>
+                <ul>
+                    <li><a href="admin.html">INICIO</a></li>
+                    <li><a href="cocinaadmin.html">COCINA</a></li>
+                    <li><a href="indexadmin.html">CLIENTE</a></li>
+
+                    <li><a href="bodegaadmin.html">BODEGA</a></li>
+                    <li><a href="historialadmin.html">HISTORIAL DEL MES</a></li>
+                    <li class="logout-item">
+                        <a href="inicio.php" class="logout-button">CERRAR SESIÓN</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header-center">
+            <div class="con">
+                <h2>Siglo "XXI"<span>Restaurante</span></h2>
+                <p>¡Bienvenidos al área de Finanzas! Aquí podrás visualizar los ingresos por pedidos entregados y los egresos por gastos básicos y pagos a proveedores.</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Ingresos -->
+        <section class="ingresos">
+            <h2>Ingresos (Pedidos Entregados)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha de entrega</th>
+                        <th>Pedido</th>
+                        <th>Precio</th>
+                        
+                    </tr>
+                </thead>
+                <tbody id="ingresos-lista">
+                    <!-- Los ingresos se cargarán aquí dinámicamente -->
+                </tbody>
+            </table>
+            <button id="btn-concluir-mes">Concluir Dia</button>
+        </section>
+    
+        <!-- Egresos -->
+        <!-- Egresos -->
+<section class="egresos">
+    <h2>Egresos (Gastos Básicos y Proveedores)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo de Egreso</th>
+                <th>Monto</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="egresos-lista">
+            <!-- Los egresos se cargarán aquí dinámicamente -->
+        </tbody>
+    </table>
+    
+</section>
+
+<!-- Formulario de Egresos -->
+<section class="formulario-egresos">
+    <h2>Registrar Egreso</h2>
+    <form id="form-egresos">
+        <label for="tipo-egreso">Tipo de Egreso</label>
+        <select id="tipo-egreso" required>
+            <option value="">Selecciona un tipo</option>
+            <option value="Gasto Básico">Gasto Básico</option>
+            <option value="Proveedor">Proveedor</option>
+        </select>
+        <label for="monto-egreso">Monto</label>
+        <input type="number" id="monto-egreso" placeholder="Monto" required />
+        <label for="descripcion-egreso">Descripción</label>
+        <textarea id="descripcion-egreso" placeholder="Descripción" required></textarea>
+        <button type="submit">Registrar Egreso</button>
+    </form>
+</section>
+<!-- Sección de Gráfico -->
+<section class="grafico">
+    <h2>Gráfico de Ingresos y Egresos</h2>
+    <canvas id="graficoFinanzas"></canvas>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const egresosLista = document.getElementById('egresos-lista');
+    const ingresosLista = document.getElementById('ingresos-lista');
+    const formEgresos = document.getElementById('form-egresos');
+    const btnConcluirMes = document.getElementById('btn-concluir-mes'); // Botón para concluir mes
+    const ctx = document.getElementById('graficoFinanzas').getContext('2d');
+
+    // Recuperar los egresos e ingresos de localStorage o inicializar vacíos
+    let egresos = JSON.parse(localStorage.getItem('egresos')) || [];
+    let ingresos = JSON.parse(localStorage.getItem('ingresos')) || [];
+
+    // Crear el gráfico
+    const grafico = new Chart(ctx, {
+        type: 'bar', // Tipo de gráfico (barra)
+        data: {
+            labels: ['Ingresos', 'Egresos'], // Etiquetas en el eje X
+            datasets: [{
+                label: 'Monto en CLP',
+                data: [0, 0], // Inicialmente los datos estarán en 0
+                backgroundColor: ['#4caf50', '#f44336'], // Colores para cada barra (Ingresos y Egresos)
+                borderColor: ['#388e3c', '#d32f2f'], // Colores del borde
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true, // Asegurarse de que el gráfico comience en cero
+                    ticks: {
+                        callback: function (value) {
+                            return new Intl.NumberFormat('es-CL', {
+                                style: 'currency',
+                                currency: 'CLP',
+                                minimumFractionDigits: 0
+                            }).format(value); // Formatear los valores como CLP
+                        }
+                    }
+                }
+            },
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false // Ocultar la leyenda (opcional)
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return new Intl.NumberFormat('es-CL', {
+                                style: 'currency',
+                                currency: 'CLP',
+                                minimumFractionDigits: 0
+                            }).format(tooltipItem.raw);
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Función para renderizar la tabla de egresos
+    function renderizarEgresos() {
+        egresosLista.innerHTML = ''; // Limpiar la tabla
+
+        if (egresos.length > 0) {
+            egresos.forEach((egreso, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${egreso.tipo}</td>
+                    <td>${formatearCLP(egreso.monto)} CLP</td>
+                    <td>${egreso.descripcion}</td>
+                    <td>${egreso.fecha}</td>
+                    <td>${egreso.estado}</td>
+                    <td>
+                        <button class="estado-button" data-index="${index}">
+                            ${egreso.estado === 'Pagado' ? 'Marcar como Pendiente' : 'Marcar como Pagado'}
+                        </button>
+                    </td>
+                `;
+                egresosLista.appendChild(row);
+            });
+        } else {
+            const row = document.createElement('tr');
+            row.innerHTML = '<td colspan="6">No hay egresos registrados.</td>';
+            egresosLista.appendChild(row);
+        }
+    }
+
+    // Función para renderizar la tabla de ingresos
+    function renderizarIngresos() {
+        ingresosLista.innerHTML = ''; // Limpiar la tabla
+
+        if (ingresos.length > 0) {
+            ingresos.forEach((ingreso) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${ingreso.fecha}</td>
+                    <td>${ingreso.producto}</td>
+                    <td>${formatearCLP(ingreso.precio)} CLP</td>
+                `;
+                ingresosLista.appendChild(row);
+            });
+        } else {
+            const row = document.createElement('tr');
+            row.innerHTML = '<td colspan="3">No hay ingresos registrados.</td>';
+            ingresosLista.appendChild(row);
+        }
+    }
+
+    // Función para formatear un número como CLP
+    function formatearCLP(valor) {
+        return new Intl.NumberFormat('es-CL', {
+            style: 'currency',
+            currency: 'CLP',
+            minimumFractionDigits: 0,
+        }).format(valor).replace('$', ''); // Eliminamos el símbolo de peso
+    }
+
+    // Función para actualizar el gráfico
+    function actualizarGrafico() {
+        let totalIngresos = ingresos.reduce((total, ingreso) => total + parseFloat(ingreso.precio), 0);
+        let totalEgresos = egresos.reduce((total, egreso) => total + parseFloat(egreso.monto), 0);
+
+        // Actualizar los datos del gráfico
+        grafico.data.datasets[0].data = [totalIngresos, totalEgresos];
+        grafico.update(); // Redibujar el gráfico
+    }
+
+    // Evento para manejar el envío del formulario de egresos
+    formEgresos.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Validar los campos del formulario
+        const tipoEgreso = document.getElementById('tipo-egreso').value.trim();
+        const montoEgreso = parseFloat(document.getElementById('monto-egreso').value);
+        const descripcionEgreso = document.getElementById('descripcion-egreso').value.trim();
+
+        if (!tipoEgreso || isNaN(montoEgreso) || montoEgreso <= 0 || !descripcionEgreso) {
+            alert('Por favor, completa todos los campos correctamente.');
+            return;
+        }
+
+        // Crear un nuevo objeto de egreso
+        const fechaEgreso = new Date().toLocaleDateString();
+        const estadoEgreso = 'Por Pagar'; // Estado inicial
+
+        const egreso = {
+            tipo: tipoEgreso,
+            monto: montoEgreso.toFixed(0), // Convertimos el monto a número entero (sin decimales)
+            descripcion: descripcionEgreso,
+            fecha: fechaEgreso,
+            estado: estadoEgreso,
+        };
+
+        // Guardar el egreso en el array y en localStorage
+        egresos.push(egreso);
+        localStorage.setItem('egresos', JSON.stringify(egresos));
+
+        // Actualizar la tabla
+        renderizarEgresos();
+
+        // Limpiar el formulario
+        formEgresos.reset();
+
+        // Actualizar el gráfico
+        actualizarGrafico();
+    });
+
+    // Delegación de eventos para cambiar el estado de los egresos
+    egresosLista.addEventListener('click', function (e) {
+        if (e.target.classList.contains('estado-button')) {
+            const index = e.target.dataset.index;
+            cambiarEstado(index);
+        }
+    });
+
+    // Función para cambiar el estado de un egreso
+    function cambiarEstado(index) {
+        egresos[index].estado = egresos[index].estado === 'Pagado' ? 'Por Pagar' : 'Pagado';
+        localStorage.setItem('egresos', JSON.stringify(egresos));
+        renderizarEgresos();
+        actualizarGrafico();
+    }
+
+    // Evento para concluir el mes (borrar ingresos)
+    btnConcluirMes.addEventListener('click', function () {
+        if (confirm('¿Estás seguro de que deseas concluir el Dia?')) {
+            // Transfieren los ingresos a historial
+            const ingresosParaHistorial = [...ingresos]; // Crear una copia de los ingresos
+
+            // Guardar en localStorage para historial
+            let historialIngresos = JSON.parse(localStorage.getItem('historialIngresos')) || [];
+            historialIngresos = historialIngresos.concat(ingresosParaHistorial); // Concatenamos los ingresos para historial
+            localStorage.setItem('historialIngresos', JSON.stringify(historialIngresos));
+
+            // Eliminar los ingresos de finanzas
+            ingresos = [];
+            localStorage.setItem('ingresos', JSON.stringify(ingresos)); // Guardamos el array vacío en localStorage
+
+            // Actualizar la vista de ingresos en finanzas
+            renderizarIngresos();
+
+            // Actualizar el gráfico
+            actualizarGrafico();
+
+            alert('Dia concluido. Los ingresos han sido guardados en el historial y eliminados de la vista de Finanzas.');
+        }
+    });
+
+    // Inicializar las tablas y el gráfico al cargar la página
+    renderizarEgresos();
+    renderizarIngresos();
+    actualizarGrafico();
+});
+
+</script>
+
+
+</main>
+</body>
+<footer>
+    <div class="footer">
+        <img class="grape footer-image" src="img/pngwing.com (1).png" alt="Grape">
+        <div class="a">         
+            <h4>CONTACTO</h4>
+            <ul>
+                <li>+569 873988389</li>
+                <li>+569 354054854</li>
+            </ul>
+        </div>
+        <div class="b">
+            <h4>UBICACIÓN</h4>
+            <ul>
+                <li><span><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                    <p>Isidora Goyenechea 3275, 7550129 Las Condes,</p>
+                    <p>Región Metropolitana</p></span>
+                </li>
+                <li><span><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                    <p>contacto@sigloxxi.com</p>
+                </span></li>
+            </ul>
+        </div>
+        <div class="c">
+            <h4>SOCIAL</h4>
+            <ul>
+                <li>Instagram</li>
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>WhatsApp</li>
+                <li>YouTube</li>
+            </ul>
+        </div>
+        <div class="c">
+            <h4>HORARIO ATENCIÓN</h4>
+            <ul>
+                <li>Domingo a jueves: 10:00 - 19:00 hrs</li>
+                <li>Viernes y sábados: 11:00 - 23:00 hrs</li>
+            </ul>
+        </div>
+        <p>Siglo "XXI" Restaurante</p>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siglo XXI - Historial del Mes</title>
+    <link rel="stylesheet" href="historial.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="con">
+                <h1>Siglo "XXI"<span>Restaurante</span></h1>
+                <ul>
+                    <li><a href="historial.html">INICIO</a></li>
+                    <li><a href="finanzas.html">FINANZAS</a></li>
+                    <li class="logout-item">
+                        <a href="inicio.php" class="logout-button">CERRAR SESIÓN</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header-center">
+            <div class="con">
+                <h2>Siglo "XXI"<span>Restaurante</span></h2>
+                <p>¡Bienvenidos al historial de pedidos! Aquí podrás visualizar todos los pedidos entregados.</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Historial de Ingresos -->
+        <section class="historial">
+            <h2>Historial de Pedidos Entregados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha de entrega</th>
+                        <th>Pedido</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="historial-lista">
+                    <!-- Los ingresos se cargarán aquí dinámicamente -->
+                </tbody>
+            </table>
+             <button id="eliminar-historial">Eliminar Historial</button> 
+             
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <img class="grape footer-image" src="img/pngwing.com (1).png" alt="Grape">
+            <div class="a">         
+                <h4>CONTACTO</h4>
+                <ul>
+                    <li>+569 873988389</li>
+                    <li>+569 354054854</li>
+                </ul>
+            </div>
+            <div class="b">
+                <h4>UBICACIÓN</h4>
+                <ul>
+                    <li><span><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                        <p>Isidora Goyenechea 3275, 7550129 Las Condes,</p>
+                        <p>Región Metropolitana</p></span>
+                    </li>
+                    <li><span><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                        <p>contacto@sigloxxi.com</p>
+                    </span></li>
+                </ul>
+            </div>
+            <div class="c">
+                <h4>SOCIAL</h4>
+                <ul>
+                    <li>Instagram</li>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>WhatsApp</li>
+                    <li>YouTube</li>
+                </ul>
+            </div>
+            <div class="c">
+                <h4>HORARIO ATENCIÓN</h4>
+                <ul>
+                    <li>Domingo a jueves: 10:00 - 19:00 hrs</li>
+                    <li>Viernes y sábados: 11:00 - 23:00 hrs</li>
+                </ul>
+            </div>
+            <p>Siglo "XXI" Restaurante</p>
+        </div>
+    </footer>
+
+    <!-- Script para cargar los ingresos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Recuperamos los ingresos desde localStorage para el historial
+            const historial = JSON.parse(localStorage.getItem('historialIngresos')) || [];
+        
+            // Mostrar los ingresos en la tabla de historial
+            const historialLista = document.getElementById('historial-lista');
+            if (historial.length > 0) {
+                historial.forEach((ingreso, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${ingreso.fecha}</td>
+                        <td>${ingreso.producto}</td>
+                        <td>${ingreso.precio}</td>
+                    `;
+                    historialLista.appendChild(row);
+                });
+            }
+        
+            // Función para eliminar el historial y generar el archivo txt
+            const btnEliminarHistorial = document.getElementById('eliminar-historial');
+            btnEliminarHistorial.addEventListener('click', function () {
+                if (confirm('¿Estás seguro de que deseas eliminar el historial?')) {
+                    // Generar el archivo .txt con el contenido a eliminar
+                    let historialTexto = 'Historial de Pedidos Eliminados\n\n';
+                    let totalMes = 0;
+        
+                    historial.forEach(ingreso => {
+                        historialTexto += `${ingreso.fecha} / ${ingreso.producto} / ${ingreso.precio}\n`;
+                        totalMes += parseFloat(ingreso.precio); // Sumando los precios
+                    });
+        
+                    // Añadir la suma total al final del archivo
+                    historialTexto += `\nTotal del Mes: $${totalMes.toFixed(2)}`;
+        
+                    // Crear el archivo .txt
+                    const blob = new Blob([historialTexto], { type: 'text/plain' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'historial_eliminado.txt';
+                    link.click();
+        
+                    // Eliminar el historial de localStorage y limpiar la tabla
+                    localStorage.removeItem('historialIngresos');
+                    historialLista.innerHTML = '';
+                    const row = document.createElement('tr');
+                    row.innerHTML = '<td colspan="3">No hay ingresos registrados.</td>';
+                    historialLista.appendChild(row); // Mostrar mensaje de no registros
+                }
+            });
+        });
+        </script>
+        
+</body>
+</html>

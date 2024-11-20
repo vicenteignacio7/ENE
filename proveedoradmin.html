@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siglo XXI - Bodega</title>
+    <link rel="stylesheet" href="proveedoradmin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="con">
+                <h1>Siglo "XXI"<span>Restaurante</span></h1>
+                <ul>
+                    <li><a href="admin.html">INICIO</a></li>
+                    <li><a href="bodegaadmin.html">BODEGA</a></li>
+                    <li class="logout-item">
+                        <a href="inicio.php" class="logout-button">CERRAR SESIÓN</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header-center">
+            <div class="con">
+                <h2>Siglo "XXI"<span>Restaurante</span></h2>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Gestionar Pedidos</h2>
+        <div class="product-list" id="productList">
+            <!-- Los productos solicitados se agregarán aquí -->
+        </div>
+        <!-- Botón para agregar un pedido -->
+        <button onclick="showForm()">Agregar Pedido</button>
+
+        <!-- Formulario para agregar pedido -->
+        <div id="productFormContainer" style="display: none;">
+            <form id="addProductForm" class="product-form">
+                <label for="productName">Nombre:</label>
+                <input type="text" id="productName" required>
+
+                <label for="productQuantity">Cantidad:</label>
+                <input type="number" id="productQuantity" min="1" required>
+
+                <button type="button" onclick="addProduct()">Agregar</button>
+                <button type="button" onclick="hideForm()">Cancelar</button>
+            </form>
+        </div>
+
+        <!-- Lista de productos -->
+        
+    </div>
+
+    <footer>
+        <div class="footer">
+            <img class="grape footer-image" src="img/pngwing.com (1).png" alt="Grape">
+            <div class="a">         
+                <h4>CONTACTO</h4>
+                <ul>
+                    <li>+569 873988389</li>
+                    <li>+569 354054854</li>
+                </ul>
+            </div>
+            <div class="b">
+                <h4>UBICACIÓN</h4>
+                <ul>
+                    <li><span><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                        <p>Isidora Goyenechea 3275, 7550129 Las Condes,</p>
+                        <p>Región Metropolitana</p></span>
+                    </li>
+                    <li><span><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                        <p>contacto@sigloxxi.com</p>
+                    </span></li>
+                </ul>
+            </div>
+            <div class="c">
+                <h4>SOCIAL</h4>
+                <ul>
+                    <li>Instagram</li>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>WhatsApp</li>
+                    <li>YouTube</li>
+                </ul>
+            </div>
+            <div class="c">
+                <h4>HORARIO ATENCIÓN</h4>
+                <ul>
+                    <li>Domingo a jueves: 10:00 - 19:00 hrs</li>
+                    <li>Viernes y sábados: 11:00 - 23:00 hrs</li>
+                </ul>
+            </div>
+            <p>Siglo "XXI" Restaurante</p>
+        </div>
+    </footer>
+
+    <script>
+        let editingProduct = null; // Variable para almacenar el producto que se está editando
+
+        // Función para mostrar el formulario
+        function showForm() {
+            document.getElementById("productFormContainer").style.display = 'block';
+        }
+
+        // Función para ocultar el formulario
+        function hideForm() {
+            document.getElementById("productFormContainer").style.display = 'none';
+        }
+
+        // Función para agregar o actualizar un producto
+        function addProduct() {
+            const productName = document.getElementById("productName").value;
+            const productQuantity = document.getElementById("productQuantity").value;
+
+            if (productName && productQuantity) {
+                const productList = document.getElementById("productList");
+
+                let productDiv;
+                if (editingProduct) {
+                    // Si estamos editando un producto, actualizamos su información
+                    productDiv = editingProduct;
+                    productDiv.querySelector(".product-name").textContent = productName;
+                    productDiv.querySelector(".product-quantity").textContent = productQuantity;
+                    editingProduct = null; // Limpiamos la variable de edición
+                } else {
+                    // Si es un nuevo producto, creamos un nuevo div
+                    productDiv = document.createElement("div");
+                    productDiv.classList.add("product-item");
+
+                    productDiv.innerHTML = `
+                        <span class="product-name">${productName}</span>
+                        <span class="product-quantity">${productQuantity}</span>
+                        <button class="edit" onclick="editProduct(this)">Editar</button>
+                        <button onclick="removeProduct(this)">Eliminar</button>
+                    `;
+                    productList.appendChild(productDiv);
+                }
+
+                // Limpiar los campos del formulario
+                document.getElementById("addProductForm").reset();
+                hideForm(); // Ocultar el formulario
+            } else {
+                alert("Por favor, completa todos los campos.");
+            }
+        }
+
+        // Función para eliminar un producto
+        function removeProduct(button) {
+            const productDiv = button.parentElement;
+            productDiv.remove();
+        }
+
+        // Función para editar un producto
+        function editProduct(button) {
+            editingProduct = button.parentElement;
+            document.getElementById("productName").value = editingProduct.querySelector(".product-name").textContent;
+            document.getElementById("productQuantity").value = editingProduct.querySelector(".product-quantity").textContent;
+            showForm(); // Mostrar el formulario para editar
+        }
+    </script>
+</body>
+</html>
